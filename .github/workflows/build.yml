@@ -12,19 +12,22 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4  
+      uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4  
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '9.0.x'
         include-prerelease: true
 
     - name: Restore dependencies
-      run: dotnet restore SciencePortalMVC.sln
+      # Указываем путь к основному проекту
+      run: dotnet restore ./SciencePortalMVC/SciencePortalMVC.csproj
 
     - name: Build
-      run: dotnet build SciencePortalMVC.sln --no-restore
+      # Указываем путь к основному проекту
+      run: dotnet build ./SciencePortalMVC/SciencePortalMVC.csproj --no-restore
 
     - name: Test
-      run: dotnet test SciencePortalMVC.sln --no-build --verbosity normal
+      # Указываем путь к тестовому проекту
+      run: dotnet test ./SciencePortalMVC.Tests/SciencePortalMVC.Tests.csproj --no-build --verbosity normal
