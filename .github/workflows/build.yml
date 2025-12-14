@@ -12,10 +12,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4  
       with:
         dotnet-version: '9.0.x'
         include-prerelease: true
@@ -24,7 +24,7 @@ jobs:
       run: dotnet restore SciencePortalMVC.sln
 
     - name: Build
-      run: dotnet build SciencePortalMVC.sln 
+      run: dotnet build SciencePortalMVC.sln --no-restore
 
     - name: Test
-      run: dotnet test SciencePortalMVC.sln 
+      run: dotnet test SciencePortalMVC.sln --no-build --verbosity normal
