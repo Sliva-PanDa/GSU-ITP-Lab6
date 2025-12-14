@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Главная страница";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Научный портал MVC</h1>
+    <p>Лабораторная работа №4 по разработке приложений баз данных.</p>
+
+    <div class="mt-4">
+        <h4>Основные разделы:</h4>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a class="btn btn-primary" asp-controller="Departments" asp-action="Index">Кафедры</a>
+            <a class="btn btn-primary" asp-controller="Teachers" asp-action="Index">Преподаватели</a>
+            <a class="btn btn-primary" asp-controller="Projects" asp-action="Index">Проекты</a>
+            <a class="btn btn-primary" asp-controller="Publications" asp-action="Index">Публикации</a>
+        </div>
+    </div>
+</div>

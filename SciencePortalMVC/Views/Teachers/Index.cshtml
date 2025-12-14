@@ -1,0 +1,110 @@
+@model IEnumerable<SciencePortalMVC.Models.Teacher>
+
+@{
+    ViewData["Title"] = "Преподаватели";
+}
+
+<h1>Преподаватели</h1>
+<form asp-action="Index" method="get" class="mb-3">
+    <div class="form-actions no-color">
+        <p>
+            <b>Фильтр:</b>
+            Имя: <input type="text" name="fullName" value="@ViewData["CurrentFilterName"]" />
+            Кафедра:
+            <select name="departmentId" asp-items="ViewBag.DepartmentIdSelectList"><option value="">Все</option></select>
+            <input type="submit" value="Найти" class="btn btn-sm btn-primary" /> |
+            <a asp-action="Index" asp-route-reset="true">Сбросить фильтр</a>
+        </p>
+    </div>
+</form>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Добавить нового</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Degree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Degree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Name)
+            </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.TeacherId">Details</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <text> | </text>
+                        <a asp-action="Edit" asp-route-id="@item.TeacherId">Edit</a>
+                        <text> | </text>
+                        <a asp-action="Delete" asp-route-id="@item.TeacherId">Delete</a>
+                    }
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = (int)ViewData["PageNumber"] == 1 ? "disabled" : "";
+    var nextDisabled = (int)ViewData["PageNumber"] == (int)ViewData["TotalPages"] ? "disabled" : "";
+}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li class="page-item @prevDisabled">
+            <a class="page-link" asp-action="Index"
+               asp-route-pageNumber="@((int)ViewData["PageNumber"] - 1)"
+               asp-route-fullName="@ViewData["CurrentFilterName"]"
+               asp-route-departmentId="@ViewData["CurrentFilterDeptId"]">
+                Назад
+            </a>
+        </li>
+        @for (int i = 1; i <= (int)ViewData["TotalPages"]; i++)
+        {
+            <li class="page-item @(i == (int)ViewData["PageNumber"] ? "active" : "")">
+                <a class="page-link" asp-action="Index"
+                   asp-route-pageNumber="@i"
+                   asp-route-fullName="@ViewData["CurrentFilterName"]"
+                   asp-route-departmentId="@ViewData["CurrentFilterDeptId"]">
+                    @i
+                </a>
+            </li>
+        }
+        <li class="page-item @nextDisabled">
+            <a class="page-link" asp-action="Index"
+               asp-route-pageNumber="@((int)ViewData["PageNumber"] + 1)"
+               asp-route-fullName="@ViewData["CurrentFilterName"]"
+               asp-route-departmentId="@ViewData["CurrentFilterDeptId"]">
+                Вперед
+            </a>
+        </li>
+    </ul>
+</nav>
