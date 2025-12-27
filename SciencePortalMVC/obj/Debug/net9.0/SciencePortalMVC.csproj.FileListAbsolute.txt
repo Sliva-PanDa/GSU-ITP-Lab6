@@ -321,7 +321,6 @@ D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compr
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
-D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\0zanwym8up-580nxfuokh.gz
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\jyo42tbvlo-b9sayid5wm.gz
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\i7kdhcc6fx-61n19gt1b8.gz
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\x3iknkkx1c-xtxxf3hu2r.gz
@@ -397,3 +396,5 @@ D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\refin
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\SciencePortalMVC.pdb
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\SciencePortalMVC.genruntimeconfig.cache
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\ref\SciencePortalMVC.dll
+D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\SciencePortalMVC.sourcelink.json
+D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\0zanwym8up-0xzjopuuve.gz

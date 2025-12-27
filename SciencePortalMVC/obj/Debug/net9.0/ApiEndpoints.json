@@ -1,0 +1,255 @@
+[
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.DepartmentsApiController",
+    "Method": "GetDepartments",
+    "RelativePath": "api/DepartmentsApi",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SciencePortalMVC.ViewModels.DepartmentApiDto, SciencePortalMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.DepartmentsApiController",
+    "Method": "PostDepartment",
+    "RelativePath": "api/DepartmentsApi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "SciencePortalMVC.ViewModels.CreateUpdateDepartmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SciencePortalMVC.ViewModels.DepartmentApiDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.DepartmentsApiController",
+    "Method": "DeleteDepartment",
+    "RelativePath": "api/DepartmentsApi/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.ProjectsApiController",
+    "Method": "GetProjects",
+    "RelativePath": "api/ProjectsApi",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SciencePortalMVC.ViewModels.ProjectApiDto, SciencePortalMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.ProjectsApiController",
+    "Method": "PostProject",
+    "RelativePath": "api/ProjectsApi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDto",
+        "Type": "SciencePortalMVC.ViewModels.CreateProjectApiDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SciencePortalMVC.ViewModels.ProjectApiDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.ProjectsApiController",
+    "Method": "GetProject",
+    "RelativePath": "api/ProjectsApi/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SciencePortalMVC.ViewModels.ProjectApiDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.ProjectsApiController",
+    "Method": "PutProject",
+    "RelativePath": "api/ProjectsApi/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDto",
+        "Type": "SciencePortalMVC.ViewModels.UpdateProjectApiDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.ProjectsApiController",
+    "Method": "DeleteProject",
+    "RelativePath": "api/ProjectsApi/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.PublicationsApiController",
+    "Method": "GetPublications",
+    "RelativePath": "api/PublicationsApi",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SciencePortalMVC.ViewModels.PublicationApiDto, SciencePortalMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.PublicationsApiController",
+    "Method": "PostPublication",
+    "RelativePath": "api/PublicationsApi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "SciencePortalMVC.ViewModels.CreateUpdatePublicationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SciencePortalMVC.ViewModels.PublicationApiDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.PublicationsApiController",
+    "Method": "DeletePublication",
+    "RelativePath": "api/PublicationsApi/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SciencePortalMVC.Controllers.TeachersApiController",
+    "Method": "GetTeachers",
+    "RelativePath": "api/TeachersApi",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SciencePortalMVC.ViewModels.TeacherApiDto, SciencePortalMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
