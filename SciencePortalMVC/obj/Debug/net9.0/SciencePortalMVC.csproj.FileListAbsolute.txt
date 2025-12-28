@@ -397,4 +397,4 @@ D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\Scien
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\SciencePortalMVC.genruntimeconfig.cache
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\ref\SciencePortalMVC.dll
 D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\SciencePortalMVC.sourcelink.json
-D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\0zanwym8up-0xzjopuuve.gz
+D:\ВсёВсё\проекты\БД\Lab6\SciencePortalMVC\obj\Debug\net9.0\compressed\0zanwym8up-80ast2buyv.gz

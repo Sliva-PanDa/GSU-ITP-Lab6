@@ -43,6 +43,23 @@ namespace SciencePortalMVC.Controllers
             return CreatedAtAction(nameof(GetDepartments), new { id = department.DepartmentId }, resultDto);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutDepartment(int id, CreateUpdateDepartmentDto dto)
+        {
+            var departmentToUpdate = await _repo.GetByIdAsync(id);
+            if (departmentToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            departmentToUpdate.Name = dto.Name;
+            departmentToUpdate.Profile = dto.Profile;
+
+            await _repo.UpdateAsync(departmentToUpdate);
+
+            return NoContent(); // Стандартный успешный ответ для PUT
+        }
+
         // DELETE: api/DepartmentsApi/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDepartment(int id)

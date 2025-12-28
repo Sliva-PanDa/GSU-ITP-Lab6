@@ -45,6 +45,25 @@ namespace SciencePortalMVC.Controllers
             return CreatedAtAction(nameof(GetPublications), new { id = publication.PublicationId }, resultDto);
         }
 
+        // PUT: api/PublicationsApi/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutPublication(int id, CreateUpdatePublicationDto dto)
+        {
+            var publicationToUpdate = await _repo.GetByIdAsync(id);
+            if (publicationToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            publicationToUpdate.Title = dto.Title;
+            publicationToUpdate.Type = dto.Type;
+            publicationToUpdate.Year = dto.Year;
+
+            await _repo.UpdateAsync(publicationToUpdate);
+
+            return NoContent();
+        }
+
         // DELETE: api/PublicationsApi/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePublication(int id)

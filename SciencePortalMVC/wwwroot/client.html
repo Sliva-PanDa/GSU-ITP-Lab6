@@ -18,7 +18,7 @@
 
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 20px;
         }
 
@@ -40,6 +40,7 @@
             padding: 8px;
             text-align: left;
             font-size: 14px;
+            word-break: break-word;
         }
 
         th {
@@ -52,6 +53,7 @@
             border: none;
             cursor: pointer;
             font-weight: bold;
+            margin-right: 5px;
         }
 
         .btn-sm {
@@ -64,9 +66,24 @@
             color: white;
         }
 
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: black;
+        }
+
         .btn-danger {
             background-color: #dc3545;
             color: white;
+        }
+
+        .form-container {
+            display: none;
+            margin-top: 15px;
         }
 
         .message {
@@ -107,11 +124,17 @@
         <!-- Панель Кафедры -->
         <div class="panel">
             <h2>Кафедры</h2>
-            <form id="deptForm">
-                <input type="text" id="deptName" placeholder="Название кафедры" required>
-                <input type="text" id="deptProfile" placeholder="Профиль кафедры">
-                <button type="submit" class="btn-primary">Добавить</button>
-            </form>
+            <button class="btn-primary" onclick="showCreateDeptForm()">Добавить кафедру</button>
+            <div id="deptFormContainer" class="form-container">
+                <h3 id="deptFormTitle"></h3>
+                <form id="deptForm">
+                    <input type="hidden" id="deptId">
+                    <input type="text" id="deptName" placeholder="Название кафедры" required>
+                    <input type="text" id="deptProfile" placeholder="Профиль кафедры">
+                    <button type="submit" class="btn-primary">Сохранить</button>
+                    <button type="button" class="btn-secondary" onclick="hideDeptForm()">Отмена</button>
+                </form>
+            </div>
             <table id="deptsTable">
                 <thead><tr><th>ID</th><th>Название</th><th>Профиль</th><th>Действия</th></tr></thead>
                 <tbody></tbody>
@@ -121,12 +144,18 @@
         <!-- Панель Публикации -->
         <div class="panel">
             <h2>Публикации</h2>
-            <form id="pubForm">
-                <input type="text" id="pubTitle" placeholder="Название публикации" required>
-                <input type="text" id="pubType" placeholder="Тип (статья, тезисы)" required>
-                <input type="number" id="pubYear" placeholder="Год" required>
-                <button type="submit" class="btn-primary">Добавить</button>
-            </form>
+            <button class="btn-primary" onclick="showCreatePubForm()">Добавить публикацию</button>
+            <div id="pubFormContainer" class="form-container">
+                <h3 id="pubFormTitle"></h3>
+                <form id="pubForm">
+                    <input type="hidden" id="pubId">
+                    <input type="text" id="pubTitle" placeholder="Название публикации" required>
+                    <input type="text" id="pubType" placeholder="Тип (статья, тезисы)" required>
+                    <input type="number" id="pubYear" placeholder="Год" required>
+                    <button type="submit" class="btn-primary">Сохранить</button>
+                    <button type="button" class="btn-secondary" onclick="hidePubForm()">Отмена</button>
+                </form>
+            </div>
             <table id="pubsTable">
                 <thead><tr><th>ID</th><th>Название</th><th>Год</th><th>Авторы</th><th>Действия</th></tr></thead>
                 <tbody></tbody>
@@ -136,19 +165,67 @@
     </div>
 
     <script>
-        const apiUrls = {
-            departments: "/api/DepartmentsApi",
-            publications: "/api/PublicationsApi"
-        };
+        const apiUrls = { departments: "/api/DepartmentsApi", publications: "/api/PublicationsApi" };
 
-        // --- ОБЩАЯ ЛОГИКА ---
         document.addEventListener("DOMContentLoaded", () => {
             loadDepartments();
             loadPublications();
-
-            document.getElementById('deptForm').addEventListener('submit', addDepartment);
-            document.getElementById('pubForm').addEventListener('submit', addPublication);
+            document.getElementById('deptForm').addEventListener('submit', saveDepartment);
+            document.getElementById('pubForm').addEventListener('submit', savePublication);
         });
+
+        function showMessage(text, type = 'success') { /* код без изменений */ }
+
+        // --- ЛОГИКА ДЛЯ КАФЕДР ---
+        async function loadDepartments() { /* код без изменений */ }
+        async function saveDepartment(event) { /* код без изменений */ }
+        async function deleteDepartment(id) { /* код без изменений */ }
+
+        function showCreateDeptForm() {
+            hidePubForm(); // Скрываем другую форму на всякий случай
+            document.getElementById('deptFormTitle').textContent = 'Новая кафедра';
+            document.getElementById('deptForm').reset();
+            document.getElementById('deptId').value = '';
+            document.getElementById('deptFormContainer').style.display = 'block';
+        }
+
+        function showEditDeptForm(department) {
+            hidePubForm();
+            document.getElementById('deptFormTitle').textContent = `Редактирование: ${department.name}`;
+            document.getElementById('deptId').value = department.departmentId;
+            document.getElementById('deptName').value = department.name;
+            document.getElementById('deptProfile').value = department.profile;
+            document.getElementById('deptFormContainer').style.display = 'block';
+        }
+
+        function hideDeptForm() { document.getElementById('deptFormContainer').style.display = 'none'; }
+
+        // --- ЛОГИКА ДЛЯ ПУБЛИКАЦИЙ ---
+        async function loadPublications() { /* код без изменений */ }
+        async function savePublication(event) { /* код без изменений */ }
+        async function deletePublication(id) { /* код без изменений */ }
+
+        function showCreatePubForm() {
+            hideDeptForm();
+            document.getElementById('pubFormTitle').textContent = 'Новая публикация';
+            document.getElementById('pubForm').reset();
+            document.getElementById('pubId').value = '';
+            document.getElementById('pubFormContainer').style.display = 'block';
+        }
+
+        function showEditPubForm(publication) {
+            hideDeptForm();
+            document.getElementById('pubFormTitle').textContent = `Редактирование: ${publication.title}`;
+            document.getElementById('pubId').value = publication.publicationId;
+            document.getElementById('pubTitle').value = publication.title;
+            document.getElementById('pubType').value = publication.type;
+            document.getElementById('pubYear').value = publication.year;
+            document.getElementById('pubFormContainer').style.display = 'block';
+        }
+
+        function hidePubForm() { document.getElementById('pubFormContainer').style.display = 'none'; }
+
+        // --- Вставляем полный код всех функций, чтобы не было путаницы ---
 
         function showMessage(text, type = 'success') {
             const messageDiv = document.getElementById('message');
@@ -158,7 +235,6 @@
             setTimeout(() => { messageDiv.style.display = 'none'; }, 4000);
         }
 
-        // --- ЛОГИКА ДЛЯ КАФЕДР ---
         async function loadDepartments() {
             try {
                 const response = await fetch(apiUrls.departments);
@@ -168,36 +244,46 @@
                 tbody.innerHTML = "";
                 depts.forEach(d => {
                     tbody.innerHTML += `
-                        <tr id="dept-row-${d.departmentId}">
-                            <td>${d.departmentId}</td>
-                            <td>${d.name}</td>
-                            <td>${d.profile || '-'}</td>
-                            <td><button class="btn-danger btn-sm" onclick="deleteDepartment(${d.departmentId})">Удалить</button></td>
-                        </tr>`;
+                            <tr id="dept-row-${d.departmentId}">
+                                <td>${d.departmentId}</td>
+                                <td>${d.name}</td>
+                                <td>${d.profile || '-'}</td>
+                                <td>
+                                    <button class="btn-warning btn-sm" onclick='showEditDeptForm(${JSON.stringify(d)})'>Изменить</button>
+                                    <button class="btn-danger btn-sm" onclick="deleteDepartment(${d.departmentId})">Удалить</button>
+                                </td>
+                            </tr>`;
                 });
-            } catch (error) {
-                showMessage(error.message, 'error');
-            }
+            } catch (error) { showMessage(error.message, 'error'); }
         }
 
-        async function addDepartment(event) {
+        async function saveDepartment(event) {
             event.preventDefault();
-            const deptData = {
-                name: document.getElementById('deptName').value,
-                profile: document.getElementById('deptProfile').value
-            };
-            if(!deptData.name) { showMessage("Название кафедры обязательно", "error"); return; }
-
-            await postData(apiUrls.departments, deptData, "Кафедра добавлена", loadDepartments);
-            document.getElementById('deptForm').reset();
+            const id = document.getElementById('deptId').value;
+            const isUpdating = !!id;
+            const deptData = { name: document.getElementById('deptName').value, profile: document.getElementById('deptProfile').value };
+            if (!deptData.name) { showMessage("Название кафедры обязательно", "error"); return; }
+            const url = isUpdating ? `${apiUrls.departments}/${id}` : apiUrls.departments;
+            const method = isUpdating ? 'PUT' : 'POST';
+            try {
+                const response = await fetch(url, { method: method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(deptData) });
+                if (!response.ok) throw new Error(`Ошибка сохранения кафедры: ${await response.text()}`);
+                await loadDepartments();
+                showMessage(isUpdating ? "Кафедра обновлена" : "Кафедра добавлена", 'success');
+                hideDeptForm();
+            } catch (error) { showMessage(error.message, 'error'); }
         }
 
         async function deleteDepartment(id) {
             if (!confirm(`Удалить кафедру с ID ${id}?`)) return;
-            await deleteData(`${apiUrls.departments}/${id}`, `dept-row-${id}`, "Кафедра удалена", loadDepartments);
+            try {
+                const response = await fetch(`${apiUrls.departments}/${id}`, { method: 'DELETE' });
+                if (!response.ok) throw new Error("Ошибка удаления");
+                await loadDepartments();
+                showMessage("Кафедра удалена", 'success');
+            } catch (error) { showMessage(error.message, 'error'); }
         }
 
-        // --- ЛОГИКА ДЛЯ ПУБЛИКАЦИЙ ---
         async function loadPublications() {
             try {
                 const response = await fetch(apiUrls.publications);
@@ -207,63 +293,45 @@
                 tbody.innerHTML = "";
                 pubs.forEach(p => {
                     tbody.innerHTML += `
-                        <tr id="pub-row-${p.publicationId}">
-                            <td>${p.publicationId}</td>
-                            <td>${p.title}</td>
-                            <td>${p.year}</td>
-                            <td>${p.authorNames.join(', ') || '-'}</td>
-                            <td><button class="btn-danger btn-sm" onclick="deletePublication(${p.publicationId})">Удалить</button></td>
-                        </tr>`;
+                            <tr id="pub-row-${p.publicationId}">
+                                <td>${p.publicationId}</td>
+                                <td>${p.title}</td>
+                                <td>${p.year}</td>
+                                <td>${p.authorNames.join(', ') || '-'}</td>
+                                <td>
+                                    <button class="btn-warning btn-sm" onclick='showEditPubForm(${JSON.stringify(p)})'>Изменить</button>
+                                    <button class="btn-danger btn-sm" onclick="deletePublication(${p.publicationId})">Удалить</button>
+                                </td>
+                            </tr>`;
                 });
-            } catch (error) {
-                showMessage(error.message, 'error');
-            }
+            } catch (error) { showMessage(error.message, 'error'); }
         }
 
-        async function addPublication(event) {
+        async function savePublication(event) {
             event.preventDefault();
-            const pubData = {
-                title: document.getElementById('pubTitle').value,
-                type: document.getElementById('pubType').value,
-                year: parseInt(document.getElementById('pubYear').value)
-            };
-            if(!pubData.title || !pubData.type || isNaN(pubData.year)) { showMessage("Все поля для публикации обязательны", "error"); return; }
-
-            await postData(apiUrls.publications, pubData, "Публикация добавлена", loadPublications);
-            document.getElementById('pubForm').reset();
+            const id = document.getElementById('pubId').value;
+            const isUpdating = !!id;
+            const pubData = { title: document.getElementById('pubTitle').value, type: document.getElementById('pubType').value, year: parseInt(document.getElementById('pubYear').value) };
+            if (!pubData.title || !pubData.type || isNaN(pubData.year)) { showMessage("Все поля для публикации обязательны", "error"); return; }
+            const url = isUpdating ? `${apiUrls.publications}/${id}` : apiUrls.publications;
+            const method = isUpdating ? 'PUT' : 'POST';
+            try {
+                const response = await fetch(url, { method: method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(pubData) });
+                if (!response.ok) throw new Error(`Ошибка сохранения публикации: ${await response.text()}`);
+                await loadPublications();
+                showMessage(isUpdating ? "Публикация обновлена" : "Публикация добавлена", 'success');
+                hidePubForm();
+            } catch (error) { showMessage(error.message, 'error'); }
         }
 
         async function deletePublication(id) {
             if (!confirm(`Удалить публикацию с ID ${id}?`)) return;
-            await deleteData(`${apiUrls.publications}/${id}`, `pub-row-${id}`, "Публикация удалена", loadPublications);
-        }
-
-        // --- УНИВЕРСАЛЬНЫЕ ФУНКЦИИ POST и DELETE ---
-        async function postData(url, data, successMessage, callback) {
             try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                if (!response.ok) throw new Error(`Ошибка сохранения: ${await response.text()}`);
-                await callback();
-                showMessage(successMessage, 'success');
-            } catch (error) {
-                showMessage(error.message, 'error');
-            }
-        }
-
-        async function deleteData(url, rowId, successMessage, callback) {
-             try {
-                const response = await fetch(url, { method: 'DELETE' });
+                const response = await fetch(`${apiUrls.publications}/${id}`, { method: 'DELETE' });
                 if (!response.ok) throw new Error("Ошибка удаления");
-                const rowToRemove = document.getElementById(rowId);
-                if(rowToRemove) rowToRemove.remove();
-                showMessage(successMessage, 'success');
-            } catch (error) {
-                showMessage(error.message, 'error');
-            }
+                await loadPublications();
+                showMessage("Публикация удалена", 'success');
+            } catch (error) { showMessage(error.message, 'error'); }
         }
     </script>
 </body>

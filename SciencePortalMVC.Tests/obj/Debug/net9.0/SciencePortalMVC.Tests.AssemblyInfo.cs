@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SciencePortalMVC.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1e273b7281fc3cd56962cba7c061cfad42db2ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d6a9447924996e58f6f4ae2939a90ef226fbb77")]
 [assembly: System.Reflection.AssemblyProductAttribute("SciencePortalMVC.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SciencePortalMVC.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
